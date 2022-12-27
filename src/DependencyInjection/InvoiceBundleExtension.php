@@ -20,6 +20,12 @@ final class SymfonyCastsResetPasswordExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(\dirname(__DIR__).'/Resources/config'));
         $loader->load('invoice_bundle_services.xml');
 
+        $loader->load('doctrine/invoice.xml');
+
+        // $configuration = $this->getConfiguration($configs, $container);
+
+        // $config = $this->processConfiguration($configuration, $configs);
+
         
     }
 
