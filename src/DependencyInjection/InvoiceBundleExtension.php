@@ -16,27 +16,28 @@ use Symfony\Component\DependencyInjection\Loader;
  */
 final class InvoiceBundleExtension extends Extension
 {
-    public function load(array $configs, ContainerBuilder $container): void
+     public function load(array $configs, ContainerBuilder $container): void
     {
-        $configuration = new Configuration();
+        $loader = new XmlFileLoader($container, new FileLocator(\dirname(__DIR__).'/Resources/config'));
+        $loader->load('invoice_bundle_services.xml');
+
+        $configuration = $this->getConfiguration($configs, $container);
+
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\PhpFileLoader($container, new FileLocator(self::bundleDirectory().'/Resources/config'));
+        $helperDefinition = $container->getDefinition('symfonycasts.reset_password.helper');
+        $helperDefinition->replaceArgument(2, new Reference($config['request_password_repository']));
+        $helperDefinition->replaceArgument(3, $config['lifetime']);
+        $helperDefinition->replaceArgument(4, $config['throttle_limit']);
 
-        $loader->load('manager.php');
-
-        $container->setParameter('patrickkenekayoro_invoice.model.invoice.class', $config['ticket_class']);
-
-        // $configuration = $this->getConfiguration($configs, $container);
-
-        // $config = $this->processConfiguration($configuration, $configs);
-
-        
+        $cleanerDefinition = $container->getDefinition('symfonycasts.reset_password.cleaner');
+        $cleanerDefinition->replaceArgument(0, new Reference($config['request_password_repository']));
+        $cleanerDefinition->replaceArgument(1, $config['enable_garbage_collection']);
     }
 
     public function getAlias(): string
     {
-        return 'invoice_bundle';
+        return 'patrickkenekayoro_invoice_bundle';
     }
 
     public static function bundleDirectory()
