@@ -21,23 +21,12 @@ final class InvoiceBundleExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(\dirname(__DIR__).'/Resources/config'));
         $loader->load('invoice_bundle_services.xml');
 
-        $configuration = $this->getConfiguration($configs, $container);
-
-        $config = $this->processConfiguration($configuration, $configs);
-
-        $helperDefinition = $container->getDefinition('symfonycasts.reset_password.helper');
-        $helperDefinition->replaceArgument(2, new Reference($config['request_password_repository']));
-        $helperDefinition->replaceArgument(3, $config['lifetime']);
-        $helperDefinition->replaceArgument(4, $config['throttle_limit']);
-
-        $cleanerDefinition = $container->getDefinition('symfonycasts.reset_password.cleaner');
-        $cleanerDefinition->replaceArgument(0, new Reference($config['request_password_repository']));
-        $cleanerDefinition->replaceArgument(1, $config['enable_garbage_collection']);
+        
     }
 
     public function getAlias(): string
     {
-        return 'patrickkenekayoro_invoice_bundle';
+        return 'pk_invoice_bundle';
     }
 
     public static function bundleDirectory()
