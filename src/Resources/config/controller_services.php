@@ -19,6 +19,6 @@ return static function (ContainerConfigurator $container): void {
             ->call('setContainer', [new ReferenceConfigurator('service_container')])
             ->tag('controller.service_arguments')
             ->alias('patrickkenekayoro_invoice.controller.invoice_controller', InvoiceController::class)
-            ->public()
+            // ->public()
     ;
 };

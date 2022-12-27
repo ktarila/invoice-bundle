@@ -6,6 +6,3 @@ services:
    PatrickKenekayoro\InvoiceBundle\Controller\:
       resource: "../../../src/Controller/"
       tags: ["controller.service_arguments"]
-# PatrickKenekayoro\InvoiceBundle\Controller:
-#    resource: "../../../PatrickKenekayoro/InvoiceBundle/Controller/"
-#    tags: ["controller.service_arguments"]

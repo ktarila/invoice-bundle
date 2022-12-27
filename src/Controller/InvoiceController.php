@@ -14,7 +14,7 @@ final class InvoiceController extends AbstractController
     public function index(): Response
     {
         return $this->render(
-            '@InvoiceBundle/invoice/index.html.twig',
+            '@PatrickKenekayoroInvoice/invoice/index.html.twig',
             array('msg' => 'Hello world')
         );
     }
