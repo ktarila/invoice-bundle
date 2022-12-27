@@ -1,0 +1,40 @@
+{
+    "name": "patrickkenekayoro/invoice-bundle",
+    "description": "Symfony Bundle to create invoices",
+    "type": "symfony-bundle",
+    "require": {
+        "php": ">=7.2.5",
+        "ext-json": "*",
+        "symfony/config": "^5.4 | ^6.0",
+        "symfony/dependency-injection": "^5.4 | ^6.0",
+        "symfony/deprecation-contracts": "^2.2 | ^3.0",
+        "symfony/http-kernel": "^5.4 | ^6.0"
+    },
+    "require-dev": {
+        "doctrine/orm": "^2.7",
+        "symfony/framework-bundle": "^5.4 | ^6.0",
+        "symfony/phpunit-bridge": "^5.4 | ^6.0",
+        "doctrine/doctrine-bundle": "^2.0.3"
+    },
+    "conflict": {
+        "php": ">=8.1 <8.1.10",
+        "doctrine/orm": "<2.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "PatrickKenekayoro\\InvoiceBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PatrickKenekayoro\\InvoiceBundle\\Tests\\": "tests/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Patrick Kenekayoro",
+            "email": "ktarila@gmail.com"
+        }
+    ]
+}
