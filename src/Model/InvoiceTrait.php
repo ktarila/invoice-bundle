@@ -1,24 +1,23 @@
 <?php
 
-/*
- * This file is part of the FOSUserBundle package.
- *
- * (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace PatrickKenekayoro\InvoiceBundle\Model;
 
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
 
-abstract class Invoice
+
+trait InvoiceTrait
 {
 
-    protected ?int $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    protected ?int $id = null;
 
+    #[ORM\Column(type: Types::STRING, length: 180)]
     protected string $customer;
 
+    #[ORM\Column(type: Types::INTEGER, nullable: true)]
     protected int $amount = 0;
 
 

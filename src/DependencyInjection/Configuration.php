@@ -9,8 +9,12 @@ class Configuration implements ConfigurationInterface {
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('invoice_bundle');
-        /** @var ArrayNodeDefinition $rootNode */
-        // $rootNode = $treeBuilder->getRootNode();
+        $treeBuilder
+            ->getRootNode()
+            ->children()
+                ->scalarNode('ticket_class')->isRequired()->cannotBeEmpty()
+            ->end();
+       
 
         return $treeBuilder;
     }
