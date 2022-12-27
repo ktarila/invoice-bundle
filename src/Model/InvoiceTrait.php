@@ -9,11 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 trait InvoiceTrait
 {
 
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    protected ?int $id = null;
-
     #[ORM\Column(type: Types::STRING, length: 180)]
     protected string $customer;
 
