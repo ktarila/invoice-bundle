@@ -12,7 +12,8 @@ class InvoiceBundle extends AbstractBundle
      public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         // load an XML, PHP or Yaml file
-        $container->import('../config/controller_services.php');
+        $container->import('./Resources/config/controller_services.php');
+        $container->import('./Resources/config/routing.yml');
 
         
     }
