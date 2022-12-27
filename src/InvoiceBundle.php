@@ -1,12 +1,10 @@
 <?php
 namespace PatrickKenekayoro\InvoiceBundle;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
-/**
- * InvoiceBundle
- */
-class InvoiceBundle extends Bundle
+
+class InvoiceBundle extends AbstractBundle
 {
 
     public function getPath(): string
