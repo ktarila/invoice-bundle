@@ -20,6 +20,11 @@ class PatrickKenekayoroInvoiceBundle extends AbstractBundle
     {
         // load an XML, PHP or Yaml file
         $container->import('./Resources/config/services.yaml');
+        $container->import('./Resources/config/manager.php');
+
+        $container->parameters()
+            ->set('patrick_kenekayoro_invoice.company_name', $config['company_name']);
+        $container->parameters()->set('patrickkenekayoro_invoice.model.invoice.class', $config['invoice_class']);
     }
 
     public function prependExtension(ContainerConfigurator $container, ContainerBuilder $builder): void
@@ -30,18 +35,6 @@ class PatrickKenekayoroInvoiceBundle extends AbstractBundle
         if (!isset($bundles['PatrickKenekayoroInvoiceBundle'])) {
             // disable AcmeGoodbyeBundle in bundles
             $config = ['patrick_kenekayoro_invoice' => false];
-            foreach ($container->getExtensions() as $name => $extension) {
-                match ($name) {
-                    // set use_acme_goodbye to false in the config of
-                    // acme_something and acme_other
-                //
-                    // note that if the user manually configured
-                    // use_acme_goodbye to true in config/services.yaml
-                    // then the setting would in the end be true and not false
-                    'acme_something', 'acme_other' => $container->prependExtensionConfig($name, $config),
-                    default => null
-                };
-            }
         }
 
         // $container->import('./Resources/config/packages/patrick_kenekayoro_invoice.yaml');
@@ -66,6 +59,7 @@ class PatrickKenekayoroInvoiceBundle extends AbstractBundle
         $definition->rootNode()
             ->children()
                 ->scalarNode('company_name')->defaultValue('Acme Company')->end()
+                ->scalarNode('invoice_class')->isRequired()->cannotBeEmpty()->end()
             ->end()
         ;
     }

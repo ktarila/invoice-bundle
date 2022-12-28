@@ -19,9 +19,11 @@ final class InvoiceController extends AbstractController
     #[Route('/', name: 'pk_invoice_index')]
     public function index(): Response
     {
+        $companyName = $this->getParameter('patrick_kenekayoro_invoice.company_name');
+
         return $this->render(
             '@PatrickKenekayoroInvoice/invoice/index.html.twig',
-            ['msg' => 'Hello world']
+            ['company_name' => $companyName]
         );
     }
 }
