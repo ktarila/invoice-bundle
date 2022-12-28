@@ -19,12 +19,13 @@ class PatrickKenekayoroInvoiceBundle extends AbstractBundle
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         // load an XML, PHP or Yaml file
-        $container->import('./Resources/config/services.yaml');
+        $container->import('./Resources/config/controller_services.php');
         $container->import('./Resources/config/manager.php');
+        $container->import('./Resources/config/form.php');
 
         $container->parameters()
             ->set('patrick_kenekayoro_invoice.company_name', $config['company_name']);
-        $container->parameters()->set('patrickkenekayoro_invoice.model.invoice.class', $config['invoice_class']);
+        $container->parameters()->set('patrick_kenekayoro_invoice.model.invoice.class', $config['invoice_class']);
     }
 
     public function prependExtension(ContainerConfigurator $container, ContainerBuilder $builder): void
