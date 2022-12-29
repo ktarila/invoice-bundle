@@ -26,8 +26,8 @@
       <tr>
       <td scope="row">{{ loop.index}}</td>
       <td> {{ invoice.customer }}</td>
-      <td> {{ invoice.amount}}</td>
-      <td> </td>
+      <td> {{ invoice.totalAmount|format_currency(invoice.currency) }}</td>
+      <td> {{ invoice.invoiceDate ? invoice.invoiceDate|date('d/m/Y') : "" }}</td>
       <td><a href="{{ path('pk_invoice_show', {'invoiceId': invoice.id})}}" class="btn btn-primary mr-3">View </a> <a href="{{ path('pk_invoice_edit', {'invoiceId': invoice.id})}}" class="btn btn-warning">Edit </a></td>
     </tr>
       

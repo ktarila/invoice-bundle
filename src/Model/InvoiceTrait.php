@@ -12,17 +12,22 @@ namespace PatrickKenekayoro\InvoiceBundle\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 trait InvoiceTrait
 {
     #[ORM\Column(type: Types::STRING, length: 180)]
     protected string $customer;
 
-    #[ORM\Column(type: Types::FLOAT, nullable: true)]
-    protected float $amount = 0;
-
     #[ORM\Column(type: Types::JSON, nullable: true)]
     private ?array $items = [];
+
+    #[ORM\Column(type: Types::DATE_IMMUTABLE, nullable: false)]
+    private ?\DateTimeImmutable $invoiceDate = null;
+
+    #[Assert\Currency]
+    #[ORM\Column(length: 10, nullable: false)]
+    private ?string $currency = null;
 
     /**
      * @return string
@@ -45,18 +50,6 @@ trait InvoiceTrait
     public function setCustomer(string $customer): self
     {
         $this->customer = $customer;
-
-        return $this;
-    }
-
-    public function getAmount(): float
-    {
-        return $this->amount;
-    }
-
-    public function setAmount(float $amount): self
-    {
-        $this->amount = $amount;
 
         return $this;
     }
@@ -93,6 +86,42 @@ trait InvoiceTrait
         $collection = new ArrayCollection($this->items);
         $collection->removeElement($item);
         $this->items = $collection->toArray();
+
+        return $this;
+    }
+
+    public function getInvoiceDate(): ?\DateTimeImmutable
+    {
+        return $this->invoiceDate;
+    }
+
+    public function setInvoiceDate(?\DateTimeImmutable $invoiceDate): self
+    {
+        $this->invoiceDate = $invoiceDate;
+
+        return $this;
+    }
+
+    public function getTotalAmount(): float
+    {
+        $sum = 0;
+        foreach ($this->items as $item) {
+            if (isset($item['itemAmount'])) {
+                $sum += $item['itemAmount'];
+            }
+        }
+
+        return $sum;
+    }
+
+    public function getCurrency(): ?string
+    {
+        return $this->currency;
+    }
+
+    public function setCurrency(?string $currency): self
+    {
+        $this->currency = $currency;
 
         return $this;
     }

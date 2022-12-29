@@ -8,6 +8,11 @@
                 <target>New Invoice</target>
             </trans-unit>
 
+             <trans-unit id="submit">
+                <source>submit</source>
+                <target>submit</target>
+            </trans-unit>
+
             <trans-unit id="update.invoice">
                 <source>update.invoice</source>
                 <target>Update Invoice</target>

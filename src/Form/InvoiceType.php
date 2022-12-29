@@ -13,7 +13,8 @@ namespace PatrickKenekayoro\InvoiceBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\CurrencyType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -30,11 +31,18 @@ final class InvoiceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('invoiceDate', DateType::class, [
+                'label' => 'label.invoice_date',
+                'widget' => 'single_text',
+                'input' => 'datetime_immutable',
+                'html5' => true,
+                'attr' => ['autocomplete' => 'off'],
+            ])
             ->add('customer', TextType::class, [
                 'label' => 'label.customer', ],
             )
-            ->add('amount', NumberType::class, [
-                'label' => 'label.amount', ],
+            ->add('currency', CurrencyType::class, [
+                'label' => 'label.currency', ],
             )
             ->add('items', CollectionType::class, [
                 'allow_add' => true,

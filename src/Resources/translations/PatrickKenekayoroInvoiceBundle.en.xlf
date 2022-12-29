@@ -12,6 +12,16 @@
                 <target>Amount</target>
             </trans-unit>
 
+            <trans-unit id="label.currency">
+                <source>label.currency</source>
+                <target>Currency</target>
+            </trans-unit>
+
+            <trans-unit id="label.invoice_date">
+                <source>label.invoice_date</source>
+                <target>Invoice Date</target>
+            </trans-unit>
+
             <trans-unit id="item">
                 <source>Item</source>
                 <target>Item</target>

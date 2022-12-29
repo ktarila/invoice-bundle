@@ -17,11 +17,17 @@ interface InvoiceInterface
 
     public function setCustomer(string $customer): self;
 
-    public function getAmount(): float;
-
-    public function setAmount(float $amount): self;
+    public function getTotalAmount(): float;
 
     public function getItems(): array;
 
     public function setItems(array $items): self;
+
+    public function addItem(array $item): self;
+
+    public function removeItem(array $item): self;
+
+    public function getInvoiceDate(): ?\DateTimeImmutable;
+
+    public function setInvoiceDate(?\DateTimeImmutable $invoiceDate): self;
 }

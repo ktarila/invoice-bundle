@@ -1,7 +1,8 @@
 {% form_theme form 'bootstrap_5_horizontal_layout.html.twig' %}
 {{ form_start(form) }}
+{{ form_row(form.invoiceDate) }}
 {{ form_row(form.customer) }}
-{{ form_row(form.amount) }}
+{{ form_row(form.currency) }}
 <div class="items-header row">
     <div class="col-4 d-flex align-items-center">
         <h5>Items</h5>

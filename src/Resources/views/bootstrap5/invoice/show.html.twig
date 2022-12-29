@@ -2,16 +2,61 @@
 {% block pk_invoice_content %}
 <div class="row">
     <div class="col-8">
-        <h1>{{ company_name }} Invoice</h1>
+        
     </div>
-    <div class="col-4 col-4 align-items-center d-flex justify-content-end">
+    <div class="col-4 col-4 align-items-center d-flex justify-content-end mb-2">
         <div>
             <a href="{{ path('pk_invoice_index')}}" class="btn btn-primary">All Invoices</a>
+
+            <a href="{{ path('pk_invoice_edit', {'invoiceId': invoice.id})}}" class="btn btn-warning mr-1">Update</a>
+
+            <a href="{{ path('pk_invoice_edit', {'invoiceId': invoice.id})}}" class="btn btn-danger">Delete</a>
         </div>
     </div>
     <hr />
-    <div>
-        {{ invoice.customer }}
+    <div class=" p-2">
+        <div class="d-flex row">
+            <div class="customer w-50">
+                <h4>{{ company_name }}</h4>
+                
+            </div>
+            <div class="date w-50 d-flex justify-content-end">
+                <div>
+                    <h5>INV{{ "%06d"|format(invoice.id) }}</h5>
+                    <p>{{ invoice.invoiceDate ? invoice.invoiceDate|date('d/m/Y') : "" }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="customer w-25">
+            <div class="bg-secondary px-2 pt-1 rounded">
+                <h4 class="text-white">{{ 'Bill to'|trans }}</h4>
+            </div>
+            <div>
+                <p class="fs-3">{{ invoice.customer}}</p>
+
+            </div>
+
+        </div>
+        <div class="item mt-2">
+            <table class="table table-striped table-bordered">
+                {% for item in invoice.items %}
+                <tr>
+                    <td scope="row">{{ loop.index }}</td>
+                    <td class="w-75">{{ item.item }}</td>
+                    <td class="w-20">{{ item.itemAmount|format_currency(invoice.currency)}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="summary  d-flex justify-content-end">
+            <div class="bg-secondary-subtle border border w-25 py-3">
+                <h2 class="text-center">Total: {{ invoice.totalAmount|format_currency(invoice.currency) }}</h2>
+
+            </div>
+
+        </div>
     </div>
 </div>
 {% endblock %}
