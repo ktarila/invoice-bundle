@@ -26,33 +26,7 @@ class PatrickKenekayoroInvoiceBundle extends AbstractBundle
         $container->parameters()
             ->set('patrick_kenekayoro_invoice.company_name', $config['company_name']);
         $container->parameters()->set('patrick_kenekayoro_invoice.model.invoice.class', $config['invoice_class']);
-    }
-
-    public function prependExtension(ContainerConfigurator $container, ContainerBuilder $builder): void
-    {
-        // get all bundles
-        $bundles = $builder->getParameter('kernel.bundles');
-        // determine if AcmeGoodbyeBundle is registered
-        if (!isset($bundles['PatrickKenekayoroInvoiceBundle'])) {
-            // disable AcmeGoodbyeBundle in bundles
-            $config = ['patrick_kenekayoro_invoice' => false];
-        }
-
-        // $container->import('./Resources/config/packages/patrick_kenekayoro_invoice.yaml');
-
-        // get the configuration of AcmeHelloExtension (it's a list of configuration)
-        $configs = $builder->getExtensionConfig($this->getAlias());
-
-        // iterate in reverse to preserve the original order after prepending the config
-        foreach (array_reverse($configs) as $config) {
-            // check if entity_manager_name is set in the "acme_hello" configuration
-            if (isset($config[$this->getAlias()])) {
-                // prepend the acme_something settings with the entity_manager_name
-                $builder->prependExtensionConfig($this->getAlias(), [
-                'company_name' => $config['company_name'],
-            ]);
-            }
-        }
+        $container->parameters()->set('patrick_kenekayoro_invoice.templates', $config['templates']);
     }
 
     public function configure(DefinitionConfigurator $definition): void
@@ -61,6 +35,15 @@ class PatrickKenekayoroInvoiceBundle extends AbstractBundle
             ->children()
                 ->scalarNode('company_name')->defaultValue('Acme Company')->end()
                 ->scalarNode('invoice_class')->isRequired()->cannotBeEmpty()->end()
+                ->arrayNode('templates')
+                    ->addDefaultsIfNotSet()
+                    ->canBeUnset()
+                    ->children()
+                        ->scalarNode('index')->defaultValue('@PatrickKenekayoroInvoice/bootstrap5/invoice/index.html.twig')->end()
+                        ->scalarNode('new')->defaultValue('@PatrickKenekayoroInvoice/bootstrap5/invoice/new.html.twig')->end()
+                        ->scalarNode('edit')->defaultValue('@PatrickKenekayoroInvoice/bootstrap5/invoice/edit.html.twig')->end()
+                        ->scalarNode('show')->defaultValue('@PatrickKenekayoroInvoice/bootstrap5/invoice/show.html.twig')->end()
+                    ->end()
             ->end()
         ;
     }

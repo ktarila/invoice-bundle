@@ -1,0 +1,42 @@
+{% extends '@PatrickKenekayoroInvoice/layout.html.twig' %}
+{% block pk_invoice_content %}
+<div class="row">
+    <div class="col-8">
+        <h1>{{ company_name }} Invoice</h1>
+    </div>
+    <div class="col-4 col-4 align-items-center d-flex justify-content-end">
+        <div>
+            <a href="{{ path('pk_invoice_new')}}" class="btn btn-primary">Add Invoice</a>
+        </div>
+    </div>
+    <hr />
+    <div class="col-12">
+      <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Customer</th>
+      <th scope="col">Total Amount</th>
+      <th scope="col">Invoice date</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%  for invoice in invoices %}
+      <tr>
+      <td scope="row">{{ loop.index}}</td>
+      <td> {{ invoice.customer }}</td>
+      <td> {{ invoice.amount}}</td>
+      <td> </td>
+      <td><a href="{{ path('pk_invoice_show', {'invoiceId': invoice.id})}}" class="btn btn-primary mr-3">View </a> <a href="{{ path('pk_invoice_edit', {'invoiceId': invoice.id})}}" class="btn btn-warning">Edit </a></td>
+    </tr>
+      
+    {% endfor %}
+    
+    
+  </tbody>
+</table>
+
+    </div>
+</div>
+{% endblock %}

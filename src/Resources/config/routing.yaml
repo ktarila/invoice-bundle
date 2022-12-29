@@ -5,3 +5,11 @@ pk_invoice_index:
 pk_invoice_new:
     path: /new
     controller: 'PatrickKenekayoro\InvoiceBundle\Controller\InvoiceController::new'
+
+pk_invoice_edit:
+    path: /edit/{invoiceId}
+    controller: 'PatrickKenekayoro\InvoiceBundle\Controller\InvoiceController::update'
+
+pk_invoice_show:
+    path: /show/{invoiceId}
+    controller: 'PatrickKenekayoro\InvoiceBundle\Controller\InvoiceController::show'

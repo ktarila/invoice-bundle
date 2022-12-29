@@ -1,0 +1,74 @@
+{% form_theme form 'bootstrap_5_horizontal_layout.html.twig' %}
+{{ form_start(form) }}
+{{ form_row(form.customer) }}
+{{ form_row(form.amount) }}
+<div class="items-header row">
+    <div class="col-4 d-flex align-items-center">
+        <h5>Items</h5>
+    </div>
+    <div class="col-8 d-flex justify-content-end">
+        <button type="button" class="add_item_link btn btn-success mt-3 mb-3" data-collection-holder-class="items">{{'Add an item to invoice'|trans}}</button>
+    </div>
+</div>
+<div class="items" data-index="{{ form.items|length > 0 ? form.items|last.vars.name + 1 : 0 }}" data-prototype="{{ form_widget(form.items.vars.prototype)|e('html_attr') }}">
+    {% for itemField in form.items %}
+    <div class="row itemField">
+        {{ form_row(itemField.item) }}
+        {{ form_row(itemField.itemAmount) }}
+    </div>
+    {% endfor %}
+</div>
+<div>
+    <button class="btn btn-primary">{{ button_label|trans }}</button>
+</div>
+{{ form_end(form) }}
+<script type="text/javascript">
+const addFormToCollection = (e) => {
+    const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);
+
+    const item = document.createElement('div');
+    item.classList.add('itemField', 'row');
+
+    item.innerHTML = collectionHolder
+        .dataset
+        .prototype
+        .replace(
+            /__name__/g,
+            collectionHolder.dataset.index
+        );
+
+    collectionHolder.appendChild(item);
+
+    collectionHolder.dataset.index++;
+
+    addTagFormDeleteLink(item);
+};
+
+const addTagFormDeleteLink = (item) => {
+    const removeFormButton = document.createElement('button');
+    removeFormButton.classList.add('btn', 'btn-danger', 'mt-1', 'mb-3');
+    removeFormButton.innerText = 'Delete this item';
+    const itemContainer = document.createElement('div');
+    itemContainer.classList.add('justify-content-end', 'd-flex', 'align-items-center');
+
+    itemContainer.append(removeFormButton);
+    item.append(itemContainer);
+
+    removeFormButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        item.remove();
+    });
+}
+
+document
+    .querySelectorAll('.add_item_link')
+    .forEach(btn => {
+        btn.addEventListener("click", addFormToCollection)
+    });
+
+document
+    .querySelectorAll('div.items div.itemField')
+    .forEach((tag) => {
+        addTagFormDeleteLink(tag)
+    })
+</script>

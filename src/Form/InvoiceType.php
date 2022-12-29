@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace PatrickKenekayoro\InvoiceBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -35,6 +36,14 @@ final class InvoiceType extends AbstractType
             ->add('amount', NumberType::class, [
                 'label' => 'label.amount', ],
             )
+            ->add('items', CollectionType::class, [
+                'allow_add' => true,
+                'entry_type' => ItemType::class,
+                'entry_options' => ['label' => false],
+                'label' => false,
+                'allow_add' => true,
+                 'allow_delete' => true,
+            ])
         ;
     }
 

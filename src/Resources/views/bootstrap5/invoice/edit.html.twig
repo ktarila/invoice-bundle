@@ -1,0 +1,17 @@
+{% extends '@PatrickKenekayoroInvoice/layout.html.twig' %}
+{% block pk_invoice_content %}
+<div class="row">
+    <div class="col-8">
+        <h1>{{ company_name }} Invoice</h1>
+    </div>
+    <div class="col-4 col-4 align-items-center d-flex justify-content-end">
+        <div>
+            <a href="{{ path('pk_invoice_index')}}" class="btn btn-primary">All Invoices</a>
+        </div>
+    </div>
+    <hr />
+    <div>
+        {{ include('@PatrickKenekayoroInvoice/bootstrap5/invoice/_form.html.twig', {'button_label': 'update.invoice'}) }}
+    </div>
+</div>
+{% endblock %}

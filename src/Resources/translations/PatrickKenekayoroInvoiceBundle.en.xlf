@@ -7,15 +7,27 @@
                 <target>Customer</target>
             </trans-unit>
 
-            <trans-unit id="form.label.amount">
+            <trans-unit id="label.amount">
                 <source>label.amount</source>
                 <target>Amount</target>
+            </trans-unit>
+
+            <trans-unit id="item">
+                <source>Item</source>
+                <target>Item</target>
+            </trans-unit>
+
+            <trans-unit id="item_amount">
+                <source>Item amount</source>
+                <target>Item Amount</target>
             </trans-unit>
 
             <trans-unit id="new.invoice">
                 <source>new.invoice</source>
                 <target>New Invoice</target>
             </trans-unit>
+
+            
         </body>
     </file>
 </xliff>
