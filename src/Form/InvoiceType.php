@@ -15,6 +15,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CurrencyType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -41,6 +42,10 @@ final class InvoiceType extends AbstractType
             ->add('customer', TextType::class, [
                 'label' => 'label.customer', ],
             )
+            ->add('customerAddress', TextareaType::class, [
+                'attr' => ['rows' => 6],
+                'label' => 'label.customerAddress',
+            ])
             ->add('currency', CurrencyType::class, [
                 'label' => 'label.currency', ],
             )

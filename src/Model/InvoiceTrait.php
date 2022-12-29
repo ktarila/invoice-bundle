@@ -29,6 +29,9 @@ trait InvoiceTrait
     #[ORM\Column(length: 10, nullable: false)]
     private ?string $currency = null;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $customerAddress = null;
+
     /**
      * @return string
      */
@@ -90,12 +93,12 @@ trait InvoiceTrait
         return $this;
     }
 
-    public function getInvoiceDate(): ?\DateTimeImmutable
+    public function getInvoiceDate(): \DateTimeImmutable
     {
         return $this->invoiceDate;
     }
 
-    public function setInvoiceDate(?\DateTimeImmutable $invoiceDate): self
+    public function setInvoiceDate(\DateTimeImmutable $invoiceDate): self
     {
         $this->invoiceDate = $invoiceDate;
 
@@ -122,6 +125,18 @@ trait InvoiceTrait
     public function setCurrency(?string $currency): self
     {
         $this->currency = $currency;
+
+        return $this;
+    }
+
+    public function getCustomerAddress(): ?string
+    {
+        return $this->customerAddress;
+    }
+
+    public function setCustomerAddress(?string $customerAddress): self
+    {
+        $this->customerAddress = $customerAddress;
 
         return $this;
     }

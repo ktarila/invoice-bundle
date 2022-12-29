@@ -27,7 +27,11 @@ interface InvoiceInterface
 
     public function removeItem(array $item): self;
 
-    public function getInvoiceDate(): ?\DateTimeImmutable;
+    public function getInvoiceDate(): \DateTimeImmutable;
 
-    public function setInvoiceDate(?\DateTimeImmutable $invoiceDate): self;
+    public function setInvoiceDate(\DateTimeImmutable $invoiceDate): self;
+
+    public function getCustomerAddress(): ?string;
+
+    public function setCustomerAddress(?string $customerAddress): self;
 }

@@ -17,7 +17,7 @@
     <div class=" p-2">
         <div class="d-flex row">
             <div class="customer w-50">
-                <h4>{{ company_name }}</h4>
+                <h1>{{ company_name }}</h1>
                 
             </div>
             <div class="date w-50 d-flex justify-content-end">
@@ -28,12 +28,13 @@
             </div>
         </div>
 
-        <div class="customer w-25">
-            <div class="bg-secondary px-2 pt-1 rounded">
-                <h4 class="text-white">{{ 'Bill to'|trans }}</h4>
+        <div class="customer  p-2">
+            <div class="">
+                <h2 class="fw-bolder">{{ 'Bill to'|trans }}</h2>
             </div>
             <div>
-                <p class="fs-3">{{ invoice.customer}}</p>
+                <h3 class="fw-bold">{{ invoice.customer}}</h3>
+                <p> {{ invoice.customerAddress|nl2br}}</p>
 
             </div>
 
@@ -51,7 +52,7 @@
         </div>
 
         <div class="summary  d-flex justify-content-end">
-            <div class="bg-secondary-subtle border border w-25 py-3">
+            <div class="bg-secondary-subtle border border w-50 py-3">
                 <h2 class="text-center">Total: {{ invoice.totalAmount|format_currency(invoice.currency) }}</h2>
 
             </div>

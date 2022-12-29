@@ -7,6 +7,11 @@
                 <target>Customer</target>
             </trans-unit>
 
+            <trans-unit id="label.customerAddress">
+                <source>label.customerAddress</source>
+                <target>Customer Address</target>
+            </trans-unit>
+
             <trans-unit id="label.amount">
                 <source>label.amount</source>
                 <target>Amount</target>
