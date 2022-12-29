@@ -13,3 +13,8 @@ pk_invoice_edit:
 pk_invoice_show:
     path: /show/{invoiceId}
     controller: 'PatrickKenekayoro\InvoiceBundle\Controller\InvoiceController::show'
+
+pk_invoice_delete:
+    path: /delete/{invoiceId}
+    controller: 'PatrickKenekayoro\InvoiceBundle\Controller\InvoiceController::delete'
+    methods: POST

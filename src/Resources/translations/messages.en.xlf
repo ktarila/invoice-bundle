@@ -13,6 +13,11 @@
                 <target>submit</target>
             </trans-unit>
 
+             <trans-unit id="billto">
+                <source>Bill to</source>
+                <target>Bill to</target>
+            </trans-unit>
+
             <trans-unit id="update.invoice">
                 <source>update.invoice</source>
                 <target>Update Invoice</target>

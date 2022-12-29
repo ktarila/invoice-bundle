@@ -112,4 +112,17 @@ final class InvoiceController extends AbstractController
             ]
         );
     }
+
+    public function delete(Request $request, int $invoiceId): Response
+    {
+        $invoice = $this->invoiceManager->getInvoiceById($invoiceId);
+        if (null === $invoice) {
+            throw $this->createNotFoundException('Invoice not found');
+        }
+        if ($this->isCsrfTokenValid('delete'.$invoice->getId(), $request->request->get('_token'))) {
+            $this->invoiceManager->deleteInvoice($invoice);
+        }
+
+        return $this->redirectToRoute('pk_invoice_index', [], Response::HTTP_SEE_OTHER);
+    }
 }
