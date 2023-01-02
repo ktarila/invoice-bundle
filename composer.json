@@ -1,5 +1,5 @@
 {
-    "name": "patrickkenekayoro/invoice-bundle",
+    "name": "ktarila/invoice-bundle",
     "description": "Symfony Bundle to create invoices",
     "type": "symfony-bundle",
     "require": {
