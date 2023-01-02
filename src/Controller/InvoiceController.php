@@ -7,10 +7,10 @@
  * file that was distributed with this source code.
  */
 
-namespace PatrickKenekayoro\InvoiceBundle\Controller;
+namespace Ktarila\InvoiceBundle\Controller;
 
-use PatrickKenekayoro\InvoiceBundle\Form\InvoiceType;
-use PatrickKenekayoro\InvoiceBundle\Manager\InvoiceManager;
+use Ktarila\InvoiceBundle\Form\InvoiceType;
+use Ktarila\InvoiceBundle\Manager\InvoiceManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,8 +27,8 @@ final class InvoiceController extends AbstractController
 
     public function index(): Response
     {
-        $companyName = $this->getParameter('patrick_kenekayoro_invoice.company_name');
-        $templates = $this->getParameter('patrick_kenekayoro_invoice.templates');
+        $companyName = $this->getParameter('ktarila_invoice.company_name');
+        $templates = $this->getParameter('ktarila_invoice.templates');
         $invoices = $this->invoiceManager->findInvoices();
 
         return $this->render(
@@ -42,8 +42,8 @@ final class InvoiceController extends AbstractController
 
     public function new(Request $request): Response
     {
-        $companyName = $this->getParameter('patrick_kenekayoro_invoice.company_name');
-        $templates = $this->getParameter('patrick_kenekayoro_invoice.templates');
+        $companyName = $this->getParameter('ktarila_invoice.company_name');
+        $templates = $this->getParameter('ktarila_invoice.templates');
 
         $invoice = $this->invoiceManager->createInvoice();
         $form = $this->createForm(InvoiceType::class, $invoice);
@@ -67,8 +67,8 @@ final class InvoiceController extends AbstractController
 
     public function update(Request $request, int $invoiceId): Response
     {
-        $companyName = $this->getParameter('patrick_kenekayoro_invoice.company_name');
-        $templates = $this->getParameter('patrick_kenekayoro_invoice.templates');
+        $companyName = $this->getParameter('ktarila_invoice.company_name');
+        $templates = $this->getParameter('ktarila_invoice.templates');
 
         $invoice = $this->invoiceManager->getInvoiceById($invoiceId);
         if (null === $invoice) {
@@ -96,8 +96,8 @@ final class InvoiceController extends AbstractController
 
     public function show(int $invoiceId): Response
     {
-        $companyName = $this->getParameter('patrick_kenekayoro_invoice.company_name');
-        $templates = $this->getParameter('patrick_kenekayoro_invoice.templates');
+        $companyName = $this->getParameter('ktarila_invoice.company_name');
+        $templates = $this->getParameter('ktarila_invoice.templates');
 
         $invoice = $this->invoiceManager->getInvoiceById($invoiceId);
         if (null === $invoice) {

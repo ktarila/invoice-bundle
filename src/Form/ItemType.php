@@ -9,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace PatrickKenekayoro\InvoiceBundle\Form;
+namespace Ktarila\InvoiceBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -33,7 +33,7 @@ final class ItemType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'translation_domain' => 'PatrickKenekayoroInvoiceBundle',
+            'translation_domain' => 'KtarilaInvoiceBundle',
         ]);
     }
 }

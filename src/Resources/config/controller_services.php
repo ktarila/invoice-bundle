@@ -9,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-use PatrickKenekayoro\InvoiceBundle\Manager\InvoiceManagerInterface;
+use Ktarila\InvoiceBundle\Manager\InvoiceManagerInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator;
 
@@ -20,7 +20,7 @@ return static function (ContainerConfigurator $container): void {
             ->autoconfigure() // Automatically registers your services as commands, event subscribers, etc.
     ;
 
-    $services->load('PatrickKenekayoro\\InvoiceBundle\\Controller\\', '../../../src/Controller/')
+    $services->load('Ktarila\\InvoiceBundle\\Controller\\', '../../../src/Controller/')
         ->tag('controller.service_arguments')
         ->args([
                 new ReferenceConfigurator(InvoiceManagerInterface::class),

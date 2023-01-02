@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace PatrickKenekayoro\InvoiceBundle\Model;
+namespace Ktarila\InvoiceBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\DBAL\Types\Types;

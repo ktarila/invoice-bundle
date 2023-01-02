@@ -7,9 +7,9 @@
  * file that was distributed with this source code.
  */
 
-namespace PatrickKenekayoro\InvoiceBundle\Persistence\Repository;
+namespace Ktarila\InvoiceBundle\Persistence\Repository;
 
-use PatrickKenekayoro\InvoiceBundle\Model\InvoiceInterface;
+use Ktarila\InvoiceBundle\Model\InvoiceInterface;
 
 trait InvoiceRepositoryTrait
 {

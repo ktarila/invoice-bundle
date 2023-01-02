@@ -9,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace PatrickKenekayoro\InvoiceBundle\Form;
+namespace Ktarila\InvoiceBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -65,7 +65,7 @@ final class InvoiceType extends AbstractType
         $resolver->setDefaults(
             [
                 'data_class' => $this->invoiceClass,
-                'translation_domain' => 'PatrickKenekayoroInvoiceBundle',
+                'translation_domain' => 'KtarilaInvoiceBundle',
             ]
         );
     }

@@ -1,4 +1,4 @@
-{% extends '@PatrickKenekayoroInvoice/layout.html.twig' %}
+{% extends '@KtarilaInvoice/layout.html.twig' %}
 {% block pk_invoice_content %}
 <div class="row">
     <div class="col-8">
@@ -10,7 +10,7 @@
 
             <a href="{{ path('pk_invoice_edit', {'invoiceId': invoice.id})}}" class="btn btn-warning mr-1">Update</a>
 
-            {% include '@PatrickKenekayoroInvoice/bootstrap5/invoice/_delete_form.html.twig'  %}
+            {% include '@KtarilaInvoice/bootstrap5/invoice/_delete_form.html.twig'  %}
         </div>
     </div>
     <hr />

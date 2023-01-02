@@ -27,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "PatrickKenekayoro\\InvoiceBundle\\": "src/"
+            "Ktarila\\InvoiceBundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "PatrickKenekayoro\\InvoiceBundle\\Tests\\": "tests/"
+            "Ktarila\\InvoiceBundle\\Tests\\": "tests/"
         }
     },
     "license": "MIT",

@@ -9,8 +9,8 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-use PatrickKenekayoro\InvoiceBundle\Manager\InvoiceManager;
-use PatrickKenekayoro\InvoiceBundle\Manager\InvoiceManagerInterface;
+use Ktarila\InvoiceBundle\Manager\InvoiceManager;
+use Ktarila\InvoiceBundle\Manager\InvoiceManagerInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ReferenceConfigurator;
 
@@ -21,7 +21,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->set(InvoiceManager::class)
             ->public()
             ->args([
-                '%patrick_kenekayoro_invoice.model.invoice.class%',
+                '%ktarila_invoice.model.invoice.class%',
             ])
             ->call('setObjectManager', [
                 new ReferenceConfigurator('doctrine.orm.entity_manager'),

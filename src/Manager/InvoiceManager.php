@@ -9,10 +9,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace PatrickKenekayoro\InvoiceBundle\Manager;
+namespace Ktarila\InvoiceBundle\Manager;
 
 use Doctrine\Persistence\ObjectManager;
-use PatrickKenekayoro\InvoiceBundle\Model\InvoiceInterface;
+use Ktarila\InvoiceBundle\Model\InvoiceInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -20,7 +20,7 @@ final class InvoiceManager implements InvoiceManagerInterface
 {
     private $translator;
 
-    private $translationDomain = 'PatrickKenekayoroInvoiceBundle';
+    private $translationDomain = 'KtarilaInvoiceBundle';
 
     private $objectManager;
 

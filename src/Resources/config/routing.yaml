@@ -1,20 +1,20 @@
 pk_invoice_index:
     path: /
-    controller: 'PatrickKenekayoro\InvoiceBundle\Controller\InvoiceController::index'
+    controller: 'Ktarila\InvoiceBundle\Controller\InvoiceController::index'
 
 pk_invoice_new:
     path: /new
-    controller: 'PatrickKenekayoro\InvoiceBundle\Controller\InvoiceController::new'
+    controller: 'Ktarila\InvoiceBundle\Controller\InvoiceController::new'
 
 pk_invoice_edit:
     path: /edit/{invoiceId}
-    controller: 'PatrickKenekayoro\InvoiceBundle\Controller\InvoiceController::update'
+    controller: 'Ktarila\InvoiceBundle\Controller\InvoiceController::update'
 
 pk_invoice_show:
     path: /show/{invoiceId}
-    controller: 'PatrickKenekayoro\InvoiceBundle\Controller\InvoiceController::show'
+    controller: 'Ktarila\InvoiceBundle\Controller\InvoiceController::show'
 
 pk_invoice_delete:
     path: /delete/{invoiceId}
-    controller: 'PatrickKenekayoro\InvoiceBundle\Controller\InvoiceController::delete'
+    controller: 'Ktarila\InvoiceBundle\Controller\InvoiceController::delete'
     methods: POST
